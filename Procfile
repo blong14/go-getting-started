@@ -1,1 +1,1 @@
-web: goping
+web: goping-web

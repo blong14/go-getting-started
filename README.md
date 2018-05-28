@@ -8,8 +8,8 @@ Application uptime notifier written in Go.
 Make sure you have [Go](http://golang.org/doc/install) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
 ```sh
-$ go get -u github.com/blong14/goping
-$ cd $GOPATH/src/github.com/blong14/goping
+$ go get -u github.com/blong14/goping-web
+$ cd $GOPATH/src/github.com/blong14/goping-web
 $ heroku local
 ```
 

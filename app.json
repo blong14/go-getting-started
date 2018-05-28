@@ -1,11 +1,11 @@
 {
-  "name": "goping",
+  "name": "goping-web",
   "description": "Application uptime notifier",
   "keywords": [
     "go",
     "notifications",
     "ping"
   ],
-  "website": "http://github.com/blong14/goping",
-  "repository": "http://github.com/blong14/goping"
+  "website": "http://github.com/blong14/goping-web",
+  "repository": "http://github.com/blong14/goping-web"
 }
