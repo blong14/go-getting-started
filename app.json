@@ -1,12 +1,11 @@
 {
-  "name": "Start on Heroku: Go",
-  "description": "Go Getting Started Example App",
+  "name": "goping",
+  "description": "Application uptime notifier",
   "keywords": [
-    "getting-started",
     "go",
-    "sample",
-    "example"
+    "notifications",
+    "ping"
   ],
-  "website": "http://github.com/heroku/go-getting-started",
-  "repository": "http://github.com/heroku/go-getting-started"
+  "website": "http://github.com/blong14/goping",
+  "repository": "http://github.com/blong14/goping"
 }
