@@ -5,6 +5,12 @@ Application uptime notifier written in Go.
 
 ## Running Locally
 
+Hot reload
+```sh
+$ go get github.com/codegangsta/gin
+$ gin run main.go
+```
+
 Make sure you have [Go](http://golang.org/doc/install) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
 ```sh

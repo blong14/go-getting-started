@@ -3,16 +3,16 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "n2KWrxS+GQrPiFI/RQfKSj1nZTs=",
-			"path": "github.com/auth0/go-jwt-middleware",
-			"revision": "5493cabe49f7bfa6e2ec444a09d334d90cd4e2bd",
-			"revisionTime": "2017-04-25T17:11:59Z"
+			"checksumSHA1": "icSNu0bzu8AsRDHr4iWT+6kWnI4=",
+			"path": "github.com/gin-contrib/sessions",
+			"revision": "15760a03818fe16125cd735433b57a7398335b13",
+			"revisionTime": "2018-05-09T03:43:48Z"
 		},
 		{
-			"checksumSHA1": "4772zXrOaPVeDeSgdiV7Vp4KEjk=",
-			"path": "github.com/dgrijalva/jwt-go",
-			"revision": "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e",
-			"revisionTime": "2018-03-08T23:13:08Z"
+			"checksumSHA1": "eyvExzi+ADNi3cMXeld05hHhWkA=",
+			"path": "github.com/gin-contrib/sessions/cookie",
+			"revision": "15760a03818fe16125cd735433b57a7398335b13",
+			"revisionTime": "2018-05-09T03:43:48Z"
 		},
 		{
 			"checksumSHA1": "Qq7Gzany1n6gK6hpZQq9UXFhGGo=",
@@ -31,6 +31,24 @@
 			"comment": "v1.0rc1-110-g4cc2de6",
 			"path": "github.com/gin-gonic/gin/render",
 			"revision": "4cc2de6207f4128624cbdd16be30f64966c67c08"
+		},
+		{
+			"checksumSHA1": "g/V4qrXjUGG9B+e3hB+4NAYJ5Gs=",
+			"path": "github.com/gorilla/context",
+			"revision": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42",
+			"revisionTime": "2016-08-17T18:46:32Z"
+		},
+		{
+			"checksumSHA1": "N8+Cudguhlavo/ryxz5nxfgBd6s=",
+			"path": "github.com/gorilla/securecookie",
+			"revision": "b009e17e9cb1a3b7b447cf9dc0110fcaebcc1b6b",
+			"revisionTime": "2018-05-18T15:25:24Z"
+		},
+		{
+			"checksumSHA1": "+CbysIPVHXxgIIV1bdxggm/J1S0=",
+			"path": "github.com/gorilla/sessions",
+			"revision": "9ee0d62e031e098d6353a069417bd6be8015af45",
+			"revisionTime": "2018-05-14T19:37:23Z"
 		},
 		{
 			"checksumSHA1": "MFkrEy77SoBbEtLd3Ros+NZO35w=",
@@ -65,11 +83,23 @@
 			"revision": "d9558e5c97f85372afee28cf2b6059d7d3818919"
 		},
 		{
+			"checksumSHA1": "+33kONpAOtjMyyw0uD4AygLvIXg=",
+			"path": "golang.org/x/oauth2",
+			"revision": "ec22f46f877b4505e0117eeaab541714644fdd28",
+			"revisionTime": "2018-05-28T20:23:04Z"
+		},
+		{
+			"checksumSHA1": "Yokz/Wl4zeuOZG2ev8LuaLtMotE=",
+			"path": "golang.org/x/oauth2/github",
+			"revision": "ec22f46f877b4505e0117eeaab541714644fdd28",
+			"revisionTime": "2018-05-28T20:23:04Z"
+		},
+		{
 			"checksumSHA1": "P7dBpV3QA/3GJWGNwb9Hn3BzCQs=",
 			"comment": "v5.9.1",
 			"path": "gopkg.in/bluesuncorp/validator.v5",
 			"revision": "d627af88ac021317a280d320986282a6dc97549a"
 		}
 	],
-	"rootPath": "github.com/blong14/goping"
+	"rootPath": "github.com/blong14/goping-web"
 }
