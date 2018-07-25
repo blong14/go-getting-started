@@ -1,0 +1,40 @@
+{{ define "header" }}
+<html>
+
+    <head>
+
+        <title>goping</title>
+        <link href="//cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/static/stylesheets/main.css" />
+
+    </head>
+
+    <body>
+
+        <section class="container mx-auto p-4">
+            <nav>
+                <ul class="list-reset flex">
+                    <li class="mr-6">
+                        <a class="text-blue hover:text-blue-darker" href="/">Home</a>
+                    </li>
+                    <li class="mr-6">
+                        <a class="text-blue hover:text-blue-darker" href="/login">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+
+{{ end }}
+
+{{ block "content" .}}
+
+
+{{ end }}
+
+
+{{ define "footer" }}
+    </body>
+
+</html>
+
+{{ end }}

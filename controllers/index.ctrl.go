@@ -3,10 +3,15 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
+	"github.com/blong14/goping-web/core"
 )
 
 // Index main application home page
-func Index(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.tmpl.html", nil)
+func Index(w http.ResponseWriter, r *http.Request) {
+	core.RenderTemplate(w, "index", "")
+}
+
+// Login shows login form
+func Login(w http.ResponseWriter, r *http.Request) {
+	core.RenderTemplate(w, "login", "")
 }

@@ -2,13 +2,10 @@ package main
 
 import (
 	"log"
+	"net/http"
 	"os"
 
 	"github.com/blong14/goping-web/controllers"
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-contrib/sessions/cookie"
-	"github.com/gin-gonic/gin"
-	_ "github.com/heroku/x/hmetrics/onload"
 )
 
 func main() {
@@ -18,20 +15,13 @@ func main() {
 		log.Fatal("$PORT must be set")
 	}
 
-	store := cookie.NewStore([]byte("secret"))
+	// Serve static assets
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	router := gin.Default()
+	// app routes
+	http.HandleFunc("/", controllers.Index)
+	http.HandleFunc("/login", controllers.Login)
 
-	router.LoadHTMLGlob("templates/*.tmpl.html")
-	router.Static("/static", "static")
-
-	router.Use(sessions.Sessions("goping", store))
-
-	router.GET("/", controllers.Index)
-
-	router.GET("/login", controllers.GitHubInit)
-	// router.POST("/logout", controllers.GithubAuthLogOut)
-	router.GET("/account/github/callback", controllers.GitHubCallback)
-
-	router.Run(":" + port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
