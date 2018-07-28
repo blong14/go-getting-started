@@ -1,0 +1,9 @@
+{{ template "header.gohtml" }}
+
+<ul>
+    {{ range key, value := . }}
+        <li><strong>{{ key }}</strong>: {{ value }}</li>
+    {{ end }}
+</ul>
+
+{{ template "footer.gohtml" }}

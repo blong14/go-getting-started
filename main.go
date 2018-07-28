@@ -1,37 +1,43 @@
 package main
 
 import (
-	"log"
+	"io"
+	"net/http"
 	"os"
 
-	"github.com/blong14/goping-web/controllers"
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	_ "github.com/heroku/x/hmetrics/onload"
+	stat "github.com/semihalev/gin-stats"
 )
 
+func init() {
+	gin.DisableConsoleColor()
+
+	f, _ := os.Create("gin.log")
+	gin.DefaultWriter = io.MultiWriter(f)
+}
+
 func main() {
-	port := os.Getenv("PORT")
-
-	if port == "" {
-		log.Fatal("$PORT must be set")
-	}
-
-	store := cookie.NewStore([]byte("secret"))
-
 	router := gin.Default()
 
-	router.LoadHTMLGlob("templates/*.tmpl.html")
-	router.Static("/static", "static")
+	router.Use(stat.RequestStats())
 
-	router.Use(sessions.Sessions("goping", store))
+	router.LoadHTMLGlob("tpls/*")
 
-	router.GET("/", controllers.Index)
+	router.GET("/", index)
+	router.GET("/about", about)
+	router.GET("/stats", stats)
 
-	router.GET("/login", controllers.GitHubInit)
-	// router.POST("/logout", controllers.GithubAuthLogOut)
-	router.GET("/account/github/callback", controllers.GitHubCallback)
+	router.Run()
+}
 
-	router.Run(":" + port)
+func index(c *gin.Context) {
+	c.HTML(http.StatusOK, "index.gohtml", nil)
+}
+
+func about(c *gin.Context) {
+	c.HTML(http.StatusOK, "about.gohtml", nil)
+}
+
+func stats(c *gin.Context) {
+	c.HTML(http.StatusOK, "stats.gohtml", stat.Report())
 }
