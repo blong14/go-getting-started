@@ -8,5 +8,6 @@ import (
 
 // Index main application home page
 func Index(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.tmpl.html", nil)
+	user, _ := c.Get("user")
+	c.HTML(http.StatusOK, "index.gohtml", user)
 }

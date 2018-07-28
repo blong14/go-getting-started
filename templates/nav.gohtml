@@ -1,10 +1,18 @@
 <div class="bg-grey">
+    {{ if .AvatarURL }}
+        <img class="w-10 h-10 rounded-full mr-4" src="{{ .AvatarURL }}" />
+    {{ end }}
     <ul class="container mx-auto list-reset flex py-4 mb-8">
         <li class="mr-6">
             <a class="text-blue hover:text-blue-darker" href="/">Home</a>
         </li>
         <li class="mr-6">
+            {{ if not .Login }}
             <a class="text-blue hover:text-blue-darker" href="/login">Login</a>
+            {{ else }}
+            <a class="text-blue hover:text-blue-darker" href="/logout">Logout</a>
+            </form>
+            {{ end }}
         </li>
     </ul>
 </div>

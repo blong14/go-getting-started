@@ -3,13 +3,20 @@
 
 Application uptime notifier written in Go.
 
+## Setup
+```sh
+$ go get github.com/codegangsta/gin
+$ dep ensure
+```
+
 ## Running Locally
 
 Hot reload
 ```sh
-$ go get github.com/codegangsta/gin
 $ gin run main.go
 ```
+
+## Deploying to Heroku
 
 Make sure you have [Go](http://golang.org/doc/install) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
@@ -21,17 +28,14 @@ $ heroku local
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
-You should also install [govendor](https://github.com/kardianos/govendor) if you are going to add any dependencies to the sample app.
-
-## Deploying to Heroku
-
+### Deploy
 ```sh
 $ heroku create
 $ git push heroku master
 $ heroku open
 ```
 
-## Documentation
+### Documentation
 
 For more information about using Go on Heroku, see these Dev Center articles:
 

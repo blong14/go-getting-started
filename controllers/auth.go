@@ -14,9 +14,9 @@ import (
 )
 
 // GithubAuth config
-var GithubAuth *oauth2.Config = &oauth2.Config{
-	ClientID:     "", // @todo replace with OS.env
-	ClientSecret: "", // @todo replace with OS.env
+var GithubAuth = &oauth2.Config{
+	ClientID:     "53cf24a436e19359232a",                     // @todo replace with OS.env
+	ClientSecret: "c071a283179f7b7de054ef9896573c9595829e67", // @todo replace with OS.env
 	RedirectURL:  "http://localhost:3000/account/github/callback",
 	Scopes: []string{
 		"user:email",
@@ -24,14 +24,14 @@ var GithubAuth *oauth2.Config = &oauth2.Config{
 	Endpoint: github.Endpoint,
 }
 
-// GitHubInit log in with gh
-func GitHubInit(c *gin.Context) {
+// Login log in with gh
+func Login(c *gin.Context) {
 	url := GithubAuth.AuthCodeURL("state", oauth2.AccessTypeOffline)
-	c.Redirect(302, url)
+	c.Redirect(http.StatusFound, url)
 }
 
-// GitHubCallback gh success callback
-func GitHubCallback(c *gin.Context) {
+// LoginCallback success callback
+func LoginCallback(c *gin.Context) {
 	code := c.Query("code")
 	tok, err := GithubAuth.Exchange(oauth2.NoContext, code)
 
@@ -51,7 +51,6 @@ func GitHubCallback(c *gin.Context) {
 	defer resp.Body.Close()
 
 	body, _ := ioutil.ReadAll(resp.Body)
-	log.Println("body", string(body))
 
 	var prettyJSON bytes.Buffer
 	err = json.Indent(&prettyJSON, body, "", "\t")
@@ -65,4 +64,14 @@ func GitHubCallback(c *gin.Context) {
 	session.Save()
 
 	c.Redirect(http.StatusFound, "/")
+}
+
+// Logout the user
+func Logout(c *gin.Context) {
+	session := sessions.Default(c)
+
+	session.Clear()
+	session.Save()
+
+	c.Redirect(http.StatusSeeOther, "/")
 }
