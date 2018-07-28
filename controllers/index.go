@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Index main application home page
+// Index main applicaton home page
 func Index(c *gin.Context) {
-	user, _ := c.Get("user")
-	c.HTML(http.StatusOK, "index.gohtml", user)
+	ctx, _ := ContextData(c)
+	c.HTML(http.StatusOK, "index.gohtml", ctx)
 }

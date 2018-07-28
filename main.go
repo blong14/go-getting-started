@@ -32,14 +32,21 @@ func main() {
 	router.Use(middleware.Sessions())
 	router.Use(middleware.Csrf())
 	router.Use(middleware.SetCsrf())
-	router.Use(middleware.SetUser())
+	router.Use(middleware.InitContextData())
 	router.Use(stat.RequestStats())
+
+	authorized := router.Group("/")
+	authorized.Use(middleware.AuthRequired())
+	{
+		authorized.GET("/stats", controllers.Stats)
+		authorized.GET("/ping", controllers.Ping)
+		authorized.POST("/ping", controllers.DoPing)
+	}
 
 	router.GET("/", controllers.Index)
 	router.GET("/login", controllers.Login)
 	router.GET("/logout", controllers.Logout)
 	router.GET("/account/github/callback", controllers.LoginCallback)
-	router.GET("/stats", controllers.Stats)
 
 	router.Run(":" + port)
 }

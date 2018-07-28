@@ -4,19 +4,26 @@ import (
 	"github.com/blong14/goping-web/models"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	csrf "github.com/utrack/gin-csrf"
 )
 
-// SetUser pulls user from session
-func SetUser() gin.HandlerFunc {
+// InitContextData pulls user from session
+func InitContextData() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var user models.User
+
+		ctx := make(map[string]interface{})
 
 		session := sessions.Default(c)
 
 		if v := session.Get("user"); v != nil {
 			user, _ = models.ParseUser(v.(string))
-			c.Set("user", user)
+			ctx["user"] = user
 		}
+
+		ctx["token"] = csrf.GetToken(c)
+
+		c.Set("context", ctx)
 
 		c.Next()
 	}
