@@ -18,11 +18,3 @@ func Csrf() gin.HandlerFunc {
 		},
 	})
 }
-
-// SetCsrf writes csrf token in the header
-func SetCsrf() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		c.Writer.Header().Set("X-CSRF-TOKEN", csrf.GetToken(c))
-		c.Next()
-	}
-}

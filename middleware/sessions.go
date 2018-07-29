@@ -1,6 +1,8 @@
 package middleware
 
 import (
+	"os"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
@@ -8,7 +10,6 @@ import (
 
 // Sessions initializes application session
 func Sessions() gin.HandlerFunc {
-	// @todo: move "secret" to OS.env
-	store := cookie.NewStore([]byte("secret"))
+	store := cookie.NewStore([]byte(os.Getenv("SESSION_SECRET")))
 	return sessions.Sessions("goping", store)
 }

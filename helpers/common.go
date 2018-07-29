@@ -30,7 +30,6 @@ func GetRouter(templatePath string) *gin.Engine {
 
 	router.Use(middleware.Sessions())
 	router.Use(middleware.Csrf())
-	router.Use(middleware.SetCsrf())
 	router.Use(middleware.InitContextData())
 	router.Use(stat.RequestStats())
 
