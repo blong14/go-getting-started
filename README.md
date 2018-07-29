@@ -1,5 +1,6 @@
+![Build Status](https://travis-ci.org/blong14/goping-web.svg?branch=master)
 
-# goping
+# goping-web
 
 Application uptime notifier written in Go.
 
