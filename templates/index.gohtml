@@ -1,5 +1,5 @@
 <html>
-    {{ template "header.gohtml" }}
+    {{ template "header.gohtml" . }}
     <body>
         {{ template "nav.gohtml" . }}
 
@@ -45,6 +45,6 @@
 
         </div>
 
-        {{ template "scripts.gohtml" }}
+        {{ template "scripts.gohtml" . }}
     </body>
 </html>

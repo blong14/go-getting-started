@@ -1,14 +1,14 @@
 <html>
-    {{ template "header.gohtml" }}
+    {{ template "header.gohtml" . }}
     <body>
         {{ template "nav.gohtml" . }}
 
         <form action="/ping" method="POST">
-            <input type="hidden" name="_csrf" value="{{ .token }}">
+            {{ csrfField .token }}
             <input type="text" name="url" placeholder="ping url" />
             <button type="submit">Ping</button>
         </form>
 
-        {{ template "scripts.gohtml" }}
+        {{ template "scripts.gohtml" . }}
     </body>
 </html>

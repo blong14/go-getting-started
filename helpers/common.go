@@ -1,6 +1,8 @@
 package helpers
 
 import (
+	"fmt"
+	"html/template"
 	"net/http"
 	"net/http/httptest"
 
@@ -22,6 +24,7 @@ func ExecuteRequest(req *http.Request) *httptest.ResponseRecorder {
 func GetRouter(templatePath string) *gin.Engine {
 	router := gin.Default()
 
+	router.SetFuncMap(funcMap())
 	router.LoadHTMLGlob(templatePath)
 	router.Static("/static", "static")
 
@@ -45,4 +48,16 @@ func GetRouter(templatePath string) *gin.Engine {
 	router.GET("/account/github/callback", controllers.LoginCallback)
 
 	return router
+}
+
+func funcMap() (fm template.FuncMap) {
+	fm = template.FuncMap{
+		"csrfField": csrf,
+	}
+	return
+}
+
+func csrf(token string) (tmpl template.HTML) {
+	tmpl = template.HTML(fmt.Sprintf("<input type='hidden' name='_csrf' value='%s'>", token))
+	return
 }
