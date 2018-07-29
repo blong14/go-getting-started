@@ -8,4 +8,5 @@ go:
   - tip
 
 script:
+  - dep ensure
   - go test ./...
