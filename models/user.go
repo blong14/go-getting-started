@@ -41,10 +41,7 @@ type User struct {
 }
 
 // ParseUser from json string
-func ParseUser(value string) (User, error) {
-	var u User
-
-	err := json.Unmarshal([]byte(value), &u)
-
-	return u, err
+func ParseUser(value string) (u User, err error) {
+	err = json.Unmarshal([]byte(value), &u)
+	return
 }

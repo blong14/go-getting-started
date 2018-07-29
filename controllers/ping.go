@@ -9,7 +9,7 @@ import (
 
 // Ping shows ping page
 func Ping(c *gin.Context) {
-	ctx, _ := ContextData(c)
+	ctx := c.GetStringMap("context")
 	c.HTML(http.StatusOK, "ping.gohtml", ctx)
 }
 
