@@ -11,21 +11,19 @@ import (
 )
 
 // ExecuteRequest mocks a request to our mux
-func ExecuteRequest(req *http.Request, withTemplates bool) *httptest.ResponseRecorder {
+func ExecuteRequest(req *http.Request) *httptest.ResponseRecorder {
 	rr := httptest.NewRecorder()
-	router := GetRouter(withTemplates)
+	router := GetRouter("../templates/*")
 	router.ServeHTTP(rr, req)
 	return rr
 }
 
 // GetRouter creates a router during testing
-func GetRouter(withTemplates bool) *gin.Engine {
+func GetRouter(templatePath string) *gin.Engine {
 	router := gin.Default()
 
-	if withTemplates {
-		router.LoadHTMLGlob("../templates/*")
-		router.Static("/static", "static")
-	}
+	router.LoadHTMLGlob(templatePath)
+	router.Static("/static", "static")
 
 	router.Use(middleware.Sessions())
 	router.Use(middleware.Csrf())

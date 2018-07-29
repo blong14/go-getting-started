@@ -9,7 +9,7 @@ import (
 
 func TestGetPingUnAuthorized(t *testing.T) {
 	req, _ := http.NewRequest("GET", "/ping", nil)
-	response := helpers.ExecuteRequest(req, true)
+	response := helpers.ExecuteRequest(req)
 
 	expected := http.StatusUnauthorized
 

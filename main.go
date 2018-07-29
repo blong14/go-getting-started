@@ -23,9 +23,9 @@ func main() {
 		log.Fatal("$PORT must be set")
 	}
 
-	withTemplates := true
+	templatePath := "templates/*"
 
-	router := helpers.GetRouter(withTemplates)
+	router := helpers.GetRouter(templatePath)
 
 	router.Run(":" + port)
 }

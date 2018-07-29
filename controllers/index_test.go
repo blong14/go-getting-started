@@ -9,7 +9,7 @@ import (
 
 func TestGetIndex(t *testing.T) {
 	req, _ := http.NewRequest("GET", "/", nil)
-	response := helpers.ExecuteRequest(req, true)
+	response := helpers.ExecuteRequest(req)
 
 	expected := http.StatusOK
 
