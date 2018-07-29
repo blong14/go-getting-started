@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -15,9 +16,9 @@ import (
 
 // GithubAuth config
 var GithubAuth = &oauth2.Config{
-	ClientID:     "53cf24a436e19359232a",                     // @todo replace with OS.env
-	ClientSecret: "c071a283179f7b7de054ef9896573c9595829e67", // @todo replace with OS.env
-	RedirectURL:  "http://localhost:3000/account/github/callback",
+	ClientID:     os.Getenv("GH_CLIENT_ID"),
+	ClientSecret: os.Getenv("GH_CLIENT_SECRET"),
+	RedirectURL:  os.Getenv("GH_CLIENT_CALLBACK"),
 	Scopes: []string{
 		"user:email",
 	},

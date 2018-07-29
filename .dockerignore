@@ -1,0 +1,9 @@
+gin-bin
+gin.log
+.env
+.env.example
+.git
+.docker_build
+vendor
+tmp
+_vendor*
