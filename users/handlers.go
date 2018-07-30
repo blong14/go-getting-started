@@ -1,8 +1,9 @@
-package controllers
+package users
 
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -75,4 +76,19 @@ func Logout(c *gin.Context) {
 	session.Save()
 
 	c.Redirect(http.StatusSeeOther, "/")
+}
+
+// Ping shows ping page
+func Ping(c *gin.Context) {
+	ctx := c.GetStringMap("context")
+	c.HTML(http.StatusOK, "ping.gohtml", ctx)
+}
+
+// DoPing pings the url
+func DoPing(c *gin.Context) {
+	url := c.PostForm("url")
+
+	fmt.Println(url)
+
+	c.Redirect(http.StatusFound, "/ping")
 }

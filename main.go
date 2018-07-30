@@ -5,8 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/blong14/goping-web/helpers"
-
+	"github.com/blong14/goping-web/config"
 	"github.com/gin-gonic/gin"
 	_ "github.com/heroku/x/hmetrics/onload"
 )
@@ -25,7 +24,7 @@ func main() {
 
 	templatePath := "templates/*"
 
-	router := helpers.GetRouter(templatePath)
+	router := config.GetRouter(templatePath)
 
 	router.Run(":" + port)
 }

@@ -1,4 +1,4 @@
-package helpers
+package config
 
 import (
 	"fmt"
@@ -6,8 +6,9 @@ import (
 	"net/http"
 	"net/http/httptest"
 
-	"github.com/blong14/goping-web/controllers"
+	"github.com/blong14/goping-web/home"
 	"github.com/blong14/goping-web/middleware"
+	"github.com/blong14/goping-web/users"
 	"github.com/gin-gonic/gin"
 	stat "github.com/semihalev/gin-stats"
 )
@@ -36,15 +37,16 @@ func GetRouter(templatePath string) *gin.Engine {
 	authorized := router.Group("/")
 	authorized.Use(middleware.AuthRequired())
 	{
-		authorized.GET("/stats", controllers.Stats)
-		authorized.GET("/ping", controllers.Ping)
-		authorized.POST("/ping", controllers.DoPing)
+		authorized.GET("/stats", home.Stats)
+		authorized.GET("/ping", users.Ping)
+		authorized.POST("/ping", users.DoPing)
 	}
 
-	router.GET("/", controllers.Index)
-	router.GET("/login", controllers.Login)
-	router.GET("/logout", controllers.Logout)
-	router.GET("/account/github/callback", controllers.LoginCallback)
+	router.GET("/", home.Index)
+
+	router.GET("/login", users.Login)
+	router.GET("/logout", users.Logout)
+	router.GET("/account/github/callback", users.LoginCallback)
 
 	return router
 }
